@@ -121,6 +121,9 @@ mongoose.connect(dbUrl,{useNewUrlParser:true, useUnifiedTopology:true }, (err)=>
 
 // cannot serve socket.io directly with express server
 // so use hhtp server to serve socketio
-http.listen(3000,()=>{
+
+var PORT = process.env.PORT || 3000; // to listen to the port given by heroku or cloud env to run our server
+
+http.listen(PORT,()=>{
   console.log('chat app server..');
 });
