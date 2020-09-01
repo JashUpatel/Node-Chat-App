@@ -9,7 +9,7 @@ const io = require('socket.io')(http);
 const mongoose = require('mongoose');
 // directly passing app express object to http server method
 // bcoz socket io has to tie up with node and express server
-// so we imported io and passed reference to http 
+// so we imported io and passed reference to http
 
 
 // we cant serve socket io with express server directly
@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 
 // mongobd atlas connection string
 
-const dbUrl= process.env.MONGODB_URI || 'mongodb+srv://Jash:jash_u_patel007@atmsystem.8wrl0.mongodb.net/ChatApp?retryWrites=true&w=majority';
+const dbUrl = process.env.MONGODB_URI || 'mongodb+srv://Jash:jash_u_patel007@atmsystem.8wrl0.mongodb.net/ChatApp?retryWrites=true&w=majority';
 
 // create mongoose schema
 
@@ -41,7 +41,7 @@ const chatMessagesSchema = mongoose.Schema({
 },{ timestamps : true});
 
 // create mongoose model
-// if you dont want mongodb to assign name on its own 
+// if you dont want mongodb to assign name on its own
 // pass third argument collection name
 // so collection name willbe exact as mentioned
 
@@ -55,7 +55,7 @@ app.get('/messages', (req, res)=>{
   try{
 
   ChatMessages.find({},(err, messages)=>{
-    
+
     res.send(messages);
 
   });
@@ -92,7 +92,7 @@ app.post('/messages', (req, res)=>{
           return console.error(err)
       //   }
   }
-  
+
   // chatMessage.save().then(()=>{
   //   io.emit('message', req.body);
   //  res.sendStatus(200);
@@ -106,7 +106,7 @@ app.post('/messages', (req, res)=>{
   //   }
 
   // })
-  
+
 });
 
 
@@ -116,10 +116,12 @@ app.post('/messages', (req, res)=>{
 io.on('connection', (socket)=>{
     console.log('user connected');
 });
+console.log('hii ');
 
 // connect to mongodb server
-
 mongoose.connect(dbUrl,{useNewUrlParser:true, useUnifiedTopology:true }, (err)=>{
+  console.log('hiy ');
+
   console.log('mongodb connection error: ',err);
 })
 
