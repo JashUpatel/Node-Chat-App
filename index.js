@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors  = require('cors');
 
 const app = express();
 
@@ -19,6 +20,9 @@ const mongoose = require('mongoose');
 app.use(express.static(__dirname));
 app.use(bodyParser.json());
 // to parse incoming json data in req.body
+
+// using cors
+app.use(cors());
 
 app.use(bodyParser.urlencoded({extended:false}));
 // to parse req.body coming from form data
