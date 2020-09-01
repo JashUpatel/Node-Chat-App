@@ -16,5 +16,8 @@
     "mongoose": "^5.10.2",
     "nodemon": "^2.0.4",
     "socket.io": "^2.3.0"
+  },
+    "engines": {
+    "node": "10.x"
   }
 }
