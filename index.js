@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 
 // mongobd atlas connection string
 
-const dbUrl='mongodb+srv://Jash:jash_u_patel007@atmsystem.8wrl0.mongodb.net/ChatApp?retryWrites=true&w=majority';
+const dbUrl= process.env.MONGODB_URI || 'mongodb+srv://Jash:jash_u_patel007@atmsystem.8wrl0.mongodb.net/ChatApp?retryWrites=true&w=majority';
 
 // create mongoose schema
 
