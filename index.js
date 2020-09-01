@@ -120,7 +120,7 @@ console.log('hii ');
 
 // connect to mongodb server
 mongoose.connect(dbUrl,{useNewUrlParser:true, useUnifiedTopology:true }, (err)=>{
-  console.log('hiy ');
+  // console.log('hiy ');
 
   console.log('mongodb connection error: ',err);
 })
