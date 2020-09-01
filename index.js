@@ -116,7 +116,7 @@ app.post('/messages', (req, res)=>{
 io.on('connection', (socket)=>{
     console.log('user connected');
 });
-console.log('hii ');
+// console.log('hii ');
 
 // connect to mongodb server
 mongoose.connect(dbUrl,{useNewUrlParser:true, useUnifiedTopology:true }, (err)=>{
@@ -127,7 +127,7 @@ mongoose.connect(dbUrl,{useNewUrlParser:true, useUnifiedTopology:true }, (err)=>
 
 // cannot serve socket.io directly with express server
 // so use hhtp server to serve socketio
-
+// const PORT = process.env.PORT
 var PORT = process.env.PORT || 3000; // to listen to the port given by heroku or cloud env to run our server
 
 http.listen(PORT,()=>{

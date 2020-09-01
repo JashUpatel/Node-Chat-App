@@ -6,7 +6,7 @@
     <title>Node Chat App</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
- 
+
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
@@ -44,7 +44,7 @@
         <div class="container">
             <h2 style="font-family: cursive; color: #fff !important;text-shadow: 1.75px 2px 1.5px #9e9e9e9c;" class="font-weight-bold text-center">Node Chat App</h2>
         </div>
-    
+
     </div>
     <hr style="font-size:large;margin-top: -2rem;border-top: 2px solid cadetblue;">
 
@@ -76,27 +76,27 @@
                     <!-- <p class="text-center">---- end ----</p> -->
 
                  <hr id="bottomHr" style="color:#006a43; width: 300px; margin-top: 35px; border-top: 2px dotted #006a43;">
-                     
+
                  </div>
                  <div class="col"></div>
-         
+
              </div>
-             
+
              <!-- no need for this extra rendendencies also solved the scrolling issue in addMessage func below -->
 
              <!-- <hr style="visibility: hidden;"> -->
              <!-- <div id="">
                  <input type="text" style="visibility: hidden; margin-top: -50px;" name="" id="scrollDown">
              </div> -->
-             
+
          </div>
          <!-- <hr style="border-top: 2px solid cadetblue;"> -->
 
-           
+
          <!-- message bar -->
-         
+
         </div>
-        
+
         <!-- end of second column -->
 
 
@@ -110,10 +110,10 @@
                     <div class="col"></div>
                     <div class="col-sm-10">
                     <h1 class="text-left" style=" color: #006a43 !important;text-shadow: 1.75px 2px 1.5px #3f51b570; font-family: cursive;">Send Message</h1>
-        
+
                     </div>
                     <div class="col"></div>
-        
+
                 </div>
                 <br>
                 <div class="row">
@@ -122,7 +122,7 @@
                     <input type="text" style="font-family: cursive;box-shadow: 1px 1px 1.5px #9E9E9E;" name="name" class="form-control" placeholder="Name" id="name"/>
                     </div>
                     <div class="col"></div>
-        
+
                 </div>
                 <br>
                 <div class="row">
@@ -131,7 +131,7 @@
                     <textarea style="font-family: cursive;box-shadow: 1px 1px 1.5px #9E9E9E;" name="message" class="form-control" placeholder="Message" id="message"></textarea>
                     </div>
                     <div class="col"></div>
-        
+
                 </div>
                 <br>
                 <div class="row">
@@ -140,9 +140,9 @@
                     <input type="button" style="background-color: #006a43; box-shadow: 1px 1px 1.5px #9E9E9E; text-shadow: 2px 2.5px 2.5px #9E9E9E;width:100%; font-family: cursive;" name="send" class="btn btn-success"  id="send" value="Send"/>
                     </div>
                     <div class="col"></div>
-        
+
                 </div>
-        
+
         </div>
 
         <!-- send message tab  -->
@@ -151,12 +151,12 @@
 
         <!-- end of column one send message -->
 
-       
+
     </div>
 
-    
+
    <br>
-    
+
 </div>
 <br>
 
@@ -170,7 +170,7 @@
     // jquery document ready function
     $(()=>{
         console.log('loaded');
-        
+
 
 
         // adding click event on send button
@@ -215,13 +215,13 @@
     function addMessage(message){
         $('#messages').append(`<h5 style="color:#006a43; text-shadow: 0.5px 0.5px 0px #3f51b570; font-weight:bold; font-family: cursive;">${message.name}</h5><p style="color:#006a43; text-shadow: 0.5px 0.5px 0px #3f51b570;font-family: cursive;">${message.message}</p>`);
         scrollDownAnimation(); // finally solved issue by understanding by this line flow of code
-        
+
     }
 
     // function to get messages
     function getMessage(){
-        
-        $.get('http://localhost:3000/messages',(data)=>{
+
+        $.get(`http://${process.env.HOST}:${process.env.PORT}/messages`,(data)=>{
             console.log(data);
 
             // data.forEach(addMessage) is same thing as element is directly passed to a function
@@ -229,11 +229,11 @@
             data.forEach(message => {
                 addMessage(message);
             });
-            
+
 
             // adjusting scroll down to see scolldown effect
             scrollDownAnimation();
-        
+
 
         });
 
@@ -242,8 +242,8 @@
     // function to post message
     function postMessage(message){
 
-        $.post('http://localhost:3000/messages', message);
-        
+        $.post(`http://${process.env.HOST}:${process.env.PORT}/messages`, message);
+
 
         // calling funcc sto scroll down to end when message is send
         // adjusting scroll down to see scolldown effect
@@ -255,11 +255,11 @@
         // console.log(messageTab.scrollTop);
         // $('#messageList').animate({
         //     scrollTop: messageTab.scrollHeight - messageTab.clientHeight + 72
-            
+
         // }, 500);
 
 
-    
+
     }
 
     function scrollDownAnimation(){
@@ -268,14 +268,14 @@
         // var mscrollTop = messageTab.scrollTop; // gives height that is being scroll down from top
         // var mscrollHeight = messageTab.scrollHeight; // gives height of total scrollable view
         // var mclientHeight = messageTab.clientHeight; // gives the height that is displayed in scrollable view
-        
+
         // animate function of jquery to scroll down
         // {} takes the some specific numeric css style properties pass height to it takes to animate position
         // takes second parameter speed in milisecond
         // takes third parametr effect linear/swing
         // $('#messageTab').animate({
             // scrollTop: messageTab.scrollHeight - messageTab.clientHeight
-            
+
         // }, 500);
 
     // calculation will be scrollHeight - clientHeingt and new message will be added so its extra height
@@ -285,7 +285,7 @@
         // messageTab.scrollTop = messageTab.scrollHeight;
 
         // console.log('Top: ', messageTab.scrollTop);
-        
+
         // console.log('sub:',messageTab.scrollHeight - messageTab.clientHeight)
 
         // console.log('scrollheight: ', messageTab.scrollHeight);
