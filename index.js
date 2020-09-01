@@ -58,7 +58,7 @@ app.get('/messages', (req, res)=>{
 
   }
   catch(err){
-    res.sendSstatus(500);
+    res.sendStatus(500);
     return console.error(err)
   }
 });
