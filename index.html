@@ -262,7 +262,7 @@
 
 
         // $.post('http://localhost:3000/messages', message);
-        $.post('`${protocol}//${hostname}/messages`', message);
+        $.post(`${protocol}//${hostname}:${port}/messages`, message);
 
 
         // calling funcc sto scroll down to end when message is send
