@@ -52,6 +52,8 @@ var ChatMessages = mongoose.model('chatMessage',chatMessagesSchema,'chatMessages
 
 // route to get mesages
 app.get('/messages', (req, res)=>{
+  // console.log(req);
+
   try{
 
   ChatMessages.find({},(err, messages)=>{
@@ -129,6 +131,9 @@ mongoose.connect(dbUrl,{useNewUrlParser:true, useUnifiedTopology:true }, (err)=>
 // so use hhtp server to serve socketio
 // const PORT = process.env.PORT
 var PORT = process.env.PORT || 3000; // to listen to the port given by heroku or cloud env to run our server
+
+// console.log(process.env.PORT);
+// console.log(process.env.HOST);
 
 http.listen(PORT,()=>{
   console.log('chat app server..');

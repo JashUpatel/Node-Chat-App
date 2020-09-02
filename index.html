@@ -221,7 +221,19 @@
     // function to get messages
     function getMessage(){
 
-        $.get(`http://${process.env.HOST}:${process.env.PORT}/messages`,(data)=>{
+
+      // use ofloation object of vanilla js to get the dynamic values
+      
+      let protocol = location.protocol;
+      console.log(protocol);
+      let hostname = location.hostname;
+      console.log(hostname);
+      let port = location.port;
+      console.log(port);
+
+        // $.get(`http://${process.env.HOST}:${process.env.PORT}/messages`,(data)=>{
+          $.get(`${protocol}//${hostname}:${port}/messages`,(data)=>{
+
             console.log(data);
 
             // data.forEach(addMessage) is same thing as element is directly passed to a function
@@ -241,8 +253,16 @@
 
     // function to post message
     function postMessage(message){
+      let protocol = location.protocol;
+      console.log(protocol);
+      let hostname = location.hostname;
+      console.log(hostname);
+      let port = location.port;
+      console.log(port);
 
-        $.post(`http://${process.env.HOST}:${process.env.PORT}/messages`, message);
+
+        // $.post('http://localhost:3000/messages', message);
+        $.post('`${protocol}//${hostname}:${port}/messages`', message);
 
 
         // calling funcc sto scroll down to end when message is send
