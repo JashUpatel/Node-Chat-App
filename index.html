@@ -223,7 +223,7 @@
 
 
       // use ofloation object of vanilla js to get the dynamic values
-      
+
       let protocol = location.protocol;
       console.log(protocol);
       let hostname = location.hostname;
@@ -262,7 +262,7 @@
 
 
         // $.post('http://localhost:3000/messages', message);
-        $.post('`${protocol}//${hostname}:${port}/messages`', message);
+        $.post('`${protocol}//${hostname}/messages`', message);
 
 
         // calling funcc sto scroll down to end when message is send
