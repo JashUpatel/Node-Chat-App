@@ -209,11 +209,17 @@
 
 
     socket.on('message', addMessage);
-
-
     // function to add messages
     function addMessage(message){
-        $('#messages').append(`<h5 style="color:#006a43; text-shadow: 0.5px 0.5px 0px #3f51b570; font-weight:bold; font-family: cursive;">${message.name}</h5><p style="color:#006a43; text-shadow: 0.5px 0.5px 0px #3f51b570;font-family: cursive;">${message.message}</p>`);
+    if(message.name.trim()=='Jash_u_patel'){
+
+        $('#messages').append(`<div class='float-right text-wrap' style="width:100%"><h5 style="float:right; color:#006a43; text-shadow: 0.5px 0.5px 0px #3f51b570; font-weight:bold; font-family: cursive;">${message.name}</h5><p class='badge badge-light text-wrap text-break ' style="width:auto;clear:both; float:right; padding:1em 1.5em; border-radius:2em; background-color:#006a43; color:#fff; text-shadow: 0.5px 0.5px 0px #3f51b570;font-family: cursive;">${message.message}</p></div>`);
+    }
+    else{
+        $('#messages').append(`<div class='float-none text-wrap' style="width:100%;"><h5 style=" float:none;color:#006a43; text-shadow: 0.5px 0.5px 0px #3f51b570; font-weight:bold; font-family: cursive;">${message.name}</h5><p class='badge badge-ligh text-wrap text-break' style=" width:auto; float:none; padding:1em 1.5em; border-radius:2em; background-color:#e6e6e6; color:#006a43; text-shadow: 0.5px 0.5px 0px #3f51b570;font-family: cursive;">${message.message}</p></div>`);
+    }
+
+        // $('#messages').append(`<h5 style="color:#006a43; text-shadow: 0.5px 0.5px 0px #3f51b570; font-weight:bold; font-family: cursive;">${message.name}</h5><p style="color:#006a43; text-shadow: 0.5px 0.5px 0px #3f51b570;font-family: cursive;">${message.message}</p>`);
         scrollDownAnimation(); // finally solved issue by understanding by this line flow of code
 
     }
