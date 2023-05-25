@@ -238,8 +238,8 @@
       let port = location.port;
       console.log(port);
 
-         $.get(`http://${process.env.HOST}:${process.env.PORT}/messages`,(data)=>{
-          //$.get(`${protocol}//${hostname}:${port}/messages`,(data)=>{
+        //$.get(`http://${process.env.HOST}:${process.env.PORT}/messages`,(data)=>{
+          $.get(`${protocol}//${hostname}:${port}/messages`,(data)=>{
 
             console.log(data);
 
@@ -268,8 +268,8 @@
       console.log(port);
 
 
-         $.post('http://localhost:3000/messages', message);
-        //$.post(`${protocol}//${hostname}:${port}/messages`, message);
+        //$.post('http://localhost:3000/messages', message);
+        $.post(`${protocol}//${hostname}:${port}/messages`, message);
 
 
         // calling funcc sto scroll down to end when message is send
