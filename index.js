@@ -23,6 +23,7 @@ app.use(bodyParser.json());
 
 // using cors
 app.use(cors());
+res.setHeader('Access-Control-Allow-Origin', '*');
 
 app.use(bodyParser.urlencoded({extended:false}));
 // to parse req.body coming from form data
