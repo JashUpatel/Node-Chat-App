@@ -11,6 +11,7 @@ const mongoose = require('mongoose');
 // bcoz socket io has to tie up with node and express server
 // so we imported io and passed reference to http
 
+
 // we cant serve socket io with express server directly
 // so we have changed to app.listen to http.listen
 
