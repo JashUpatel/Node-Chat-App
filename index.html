@@ -238,8 +238,8 @@
       let port = location.port;
       console.log(port);
 
-        // $.get(`http://${process.env.HOST}:${process.env.PORT}/messages`,(data)=>{
-          $.get(`${protocol}//${hostname}:${port}/messages`,(data)=>{
+         $.get(`http://${process.env.HOST}:${process.env.PORT}/messages`,(data)=>{
+          //$.get(`${protocol}//${hostname}:${port}/messages`,(data)=>{
 
             console.log(data);
 
